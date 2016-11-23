@@ -1,17 +1,24 @@
 /**
- * This is the implementation for AVLTree, it contains methods include:
+ * This is the implementation for AVLTree, it contains public methods include:
  * 1. boolean insertNode();
+ * 2. int calTreeHeight();
+ * 3. void inOrderTraverse();
+ * 4. void removeNode();
  * 
- * 2. void rebalance();
- * 
- * 3. removeNode();
- *
- * 4. void inOrderTraverse();
- *
- * 5. int getHeight(): 
- * 
+ * And private methods which are helpers:
+ * 1. setBalanceFactor();
+ * 2. AVLTreeNode findUnbalancedNode();
+ * 3. void rebalance();
+ * 4. rebuildAVLTree();
+ * 5. void removeAVLTreeNode();
+ * 6. repalceNodeWithChild();
+ * 7. rotateLeft();
+ * 8. rotateRight();
+ * 9. rotateRightAndLeft();
+ * 10. rotateLeftAndRight();
  * 
  * Note: the conceot of right and left rotate
+ * 
  * @author jingjiejiang Nov 20, 2016
  * @history
  */
@@ -94,14 +101,24 @@ public class AVLTree {
 		}
 	}
 	
-	public static boolean removeNode(AVLTreeNode root, int key) {
+	/**
+	 * To remove one node whose value equals key from an AVL tree.
+	 * 
+	 * @param root 
+	 * @param key
+	 * @return if the node is successfully deleted from a tree, method returns
+	 * true; otherwise, return false.
+	 */
+	public static boolean removeNode(AVLTreeNode root,int key) {
 		
 		if (null == root) {
 			return false;
 		}
 		
 		if (key == root.val) {
+			
 			removeAVLTreeNode (root);
+			
 			return true;
 		}
 		else if (key < root.val){
@@ -112,6 +129,12 @@ public class AVLTree {
 		}
 	}
 	
+	
+	/**
+	 * Remove node nodeToRemove from an AVL tree.
+	 *
+	 * @param nodeToRemove
+	 */
 	private static void removeAVLTreeNode(AVLTreeNode nodeToRemove) {
 		
 		// there are two case when remove a node: 
@@ -146,25 +169,20 @@ public class AVLTree {
 		// 4) rebalance() the node
 		
 		AVLTreeNode original = nodeToRemove;
-		AVLTreeNode parent = nodeToRemove.parent;
 		// the node from reset balance factor
 		AVLTreeNode checkPoint = null;
 		nodeToRemove = nodeToRemove.leftNode;
 		
 		if (null == nodeToRemove.rightNode) {
 			
-			nodeToRemove.leftNode.parent = nodeToRemove.parent;
-			// exclude the case that nodeToRemove is a root node
-			if (null != parent) {
-				
-				if (parent.leftNode == original) {
-					parent.leftNode = nodeToRemove;
-				}
-				else {
-					parent.rightNode = nodeToRemove;
-				}
-			}
-			checkPoint = nodeToRemove;
+			nodeToRemove.parent = original.parent;
+			// replace the original (node to deleted) with its left child
+			// which now is (nodeToRemove)
+		    original = nodeToRemove;
+		    nodeToRemove.parent = null;
+			original.leftNode = original.leftNode.leftNode;
+			
+			checkPoint = original;
 		}
 		else {
 			
@@ -174,6 +192,7 @@ public class AVLTree {
 			}
 			
 			original.val = nodeToRemove.val;
+			// delete node: nodeToRemove
 			nodeToRemove.parent.rightNode = null;
 			checkPoint = nodeToRemove.parent;
 			nodeToRemove.parent = null;
@@ -187,20 +206,62 @@ public class AVLTree {
 		}
 	}
 	
+	/**
+	 * "Replace" the node with its non empty child. If it has no child, make it as a null node.
+	 * 
+	 * @param nodeToReplace
+	 */
 	private static void replaceNodeWithChild(AVLTreeNode nodeToReplace) {
 		
+		AVLTreeNode original = nodeToReplace;
+			
 		// the condition also include the case of having two empty children.
 		if (null == nodeToReplace.leftNode) {
 			
-			if (nodeToReplace != null) {
-				nodeToReplace.rightNode.parent = nodeToReplace.parent;
+			// case 1: nodeToRepalce has right sub tree
+			if (null != nodeToReplace.rightNode) {
+				
+				// replace the node to delete with its right child
+				original = nodeToReplace.rightNode;
+				nodeToReplace = nodeToReplace.rightNode;
+				original.rightNode = nodeToReplace.leftNode;
+				original.leftNode = nodeToReplace.leftNode;
+				
+				if (null != nodeToReplace.leftNode) {
+					
+					nodeToReplace.leftNode.parent = original;
+				}
+				
+				if (null != nodeToReplace.rightNode) {
+					
+					nodeToReplace.rightNode.parent = original;
+				}
+				nodeToReplace.parent = null;
+				
 			}
-			nodeToReplace = nodeToReplace.rightNode;
-
+			// case 2: nodeToRepalce has no sub tree
+			else {
+				nodeToReplace = null;
+			}
 		}
+		// case 3: nodeToRepalce has left sub tree
 		else {
-			nodeToReplace.leftNode.parent = nodeToReplace.parent;
+			
+			original = nodeToReplace.leftNode;
 			nodeToReplace = nodeToReplace.leftNode;
+			original.leftNode = nodeToReplace.leftNode;
+			original.rightNode = nodeToReplace.rightNode;
+			
+			if (null != nodeToReplace.leftNode) {
+				
+				nodeToReplace.leftNode.parent = original;
+			}
+			
+			if (null != nodeToReplace.rightNode) {
+				
+				nodeToReplace.rightNode.parent = original;
+			}
+			nodeToReplace.parent = null;
 		}
 		
 	}
