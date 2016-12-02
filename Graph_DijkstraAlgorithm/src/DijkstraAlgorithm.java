@@ -3,6 +3,7 @@
  * 1. Dijkstra algorithm is a greedy pattern based algorithm. Every route in the shortest route is the
  * shortest route.Therefore, it is useful to use arrays to keep tracking the route from start point to
  * every node in the graph.
+ * 2. Core is to compare path(a, c) and path(a, b) + path(b, c)
  * 
  * 1). use an array to track adjacent vertex instead of using original metrix.
  * 2) in greedy algorithm, pay attention to the "core set" taht is ought to change.
