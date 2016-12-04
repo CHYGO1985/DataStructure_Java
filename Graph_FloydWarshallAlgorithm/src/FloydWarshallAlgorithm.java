@@ -4,7 +4,6 @@
  * No matter how many vertex are there, I can consider them as a whole, so in essense, it is to compare 
  * path(a, c) and path(a, b) + path(b, c)
  * 
- * 
  * @author jingjiejiang
  * @history Dec 02, 2016
  * 1. Problem

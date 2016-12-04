@@ -55,7 +55,6 @@ public class DijkstraAlgorithm {
 		for (int i = 0; i < VERTEX; i ++) {
 			System.out.print(vexChecker[i] + "\t");
 		}
-		
 	}
 
 	public static boolean calDijkstraRoute (int startPoint, int[][] metrix) {
