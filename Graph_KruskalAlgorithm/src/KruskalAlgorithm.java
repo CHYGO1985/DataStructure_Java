@@ -1,7 +1,17 @@
 import java.util.LinkedList;
 import java.util.List;
 
-
+/**
+ * The most tricky part is to use the parent array:
+ * 1. to check whether the next available vertex will form a closed loop in a sub tree.
+ * 2. to store the connection infor (connect to available vertex) of 
+ * previous vertex that has already been added to the set 
+ * ref: fishc.com
+ * 
+ * @author jingjiejiang
+ * @history 
+ * 1. Dec 5, 2016
+ */
 public class KruskalAlgorithm {
 	
 	public static final int VER_NUM = 9;
