@@ -20,13 +20,13 @@ public class InsertSort {
 		
 		int begin;
 		int end;
-		int weitht;
+		int weight;
 
 		public Edge (int begin, int end, int weight) {
 			
 			this.begin = begin;
 			this.end = end;
-			this.weitht = weight;
+			this.weight = weight;
 		}
 	}
 	
@@ -64,12 +64,12 @@ public static void insertSort(List<Edge> list) {
 			
 			for (int j = i - 1; j >= 0; j --) {
 				
-				int sorted = list.get(j).weitht;
-				int unsorted = list.get(comparePos).weitht; 
+				int sorted = list.get(j).weight;
+				int unsorted = list.get(comparePos).weight; 
 				if (unsorted < sorted) {
 					
-					list.get(comparePos).weitht = sorted;
-					list.get(j).weitht = unsorted;
+					list.get(comparePos).weight = sorted;
+					list.get(j).weight = unsorted;
 					comparePos = j;
 				}
 			}
@@ -89,7 +89,7 @@ public static void insertSort(List<Edge> list) {
 		
 		for (Edge e: list) {
 			
-			System.out.println(e.begin + " " + e.end + " " + e.weitht);
+			System.out.println(e.begin + " " + e.end + " " + e.weight);
 			System.out.println();
 		}
 	}
@@ -98,20 +98,20 @@ public static void insertSort(List<Edge> list) {
 		// TODO Auto-generated method stub
 
 		// test case, start from 0.
-				int[][] metrix = {
-					{0, 10, X, X, X, 11, X, X, X},
-					{10, 0, 18, X, X, X, 16, X, 12},
-					{X, 18, 0, 22, X, X, X, X, 8},
-					{X, X, 22, 0, 20, X, 24, 16, 21},
-					{X, X, X, 20, 0, 26, X, 7, X},
-					{11, X, X, X, 26, 0, 17, X, X},
-					{X, 16, X, X, X, 17, 0, 19, X},
-					{X, X, X, 16, 7, X, 19, 0, X},
-					{X, 12, 8, 21, X, X, X, X, 0},
-				};
-				
-				initEdgeList(metrix);
-				buildSortedEdgeList(metrix);
+		int[][] metrix = {
+			{0, 10, X, X, X, 11, X, X, X},
+			{10, 0, 18, X, X, X, 16, X, 12},
+			{X, 18, 0, 22, X, X, X, X, 8},
+			{X, X, 22, 0, 20, X, 24, 16, 21},
+			{X, X, X, 20, 0, 26, X, 7, X},
+			{11, X, X, X, 26, 0, 17, X, X},
+			{X, 16, X, X, X, 17, 0, 19, X},
+			{X, X, X, 16, 7, X, 19, 0, X},
+			{X, 12, 8, 21, X, X, X, X, 0},
+		};
+		
+		initEdgeList(metrix);
+		buildSortedEdgeList(metrix);
 	}
 
 }
