@@ -55,7 +55,7 @@ public class InsertSort {
 		return list;
 	}
 	
-public static void insertSort(List<Edge> list) {
+	public static void insertSort(List<Edge> list) {
 		
 		// Insert sort: pick ele from unsorted part, and then insert it into sorted part
 		for (int i = 1; i < list.size(); i ++) {
@@ -95,7 +95,6 @@ public static void insertSort(List<Edge> list) {
 	}
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
 		// test case, start from 0.
 		int[][] metrix = {
