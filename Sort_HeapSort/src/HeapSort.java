@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 
 /**
  * 1.Heap sort:
@@ -68,7 +70,7 @@ public class HeapSort {
 			
 			swap(array, 1, i);
 			
-			// after the adjust, bigger ele have been upraded, so start
+			// *** after the adjust, bigger ele have been upraded, so start
 			// from 1 and the last one was swapped to the first one
 			adjustHeap(array, 1, i - 1);
 		}
@@ -79,9 +81,8 @@ public class HeapSort {
 		// test case
 		// -1 is to let the array start from 1, then easy to cal the
 		int[] test = {-1, 5, 6, 2, 0, 3, 9, 1, 7, 4};
-		
 		heapSort(test);
-		
+
 		for (int i = 1; i < test.length; i ++) {
 			
 			System.out.println(i + " ");

@@ -72,7 +72,7 @@ public class QuickSort {
 			}
 		}
 		
-		// *** note: the settings of boundry, startSec is for finding ele that are smaller than pivot
+		// *** note: the settings of boundary, startSec is for finding ele that are smaller than pivot
 		// so until it reach to the start, still need to sort; same for startFst and endBound
 		if (startBound < startSec) {
 			quickSort(array, startBound, startSec);
@@ -87,8 +87,8 @@ public class QuickSort {
 
 	public static void main(String[] args) {
 
-		//int[] test = {3, 7, 8, 5, 2, 1, 9, 5, 4};
-		int[] test = {3, 0, 1, 8, 7, 2, 5, 4, 9, 6};
+		int[] test = {3, 7, 8, 5, 2, 1, 9, 5, 4};
+		//int[] test = {3, 0, 1, 8, 7, 8, 5, 4, 9, 6};
 		
 		quickSort(test, 0, test.length - 1);
 		

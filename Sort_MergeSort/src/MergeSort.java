@@ -64,16 +64,16 @@ public class MergeSort {
 			index ++;
 		}
 		
-		//*** note why the right part wont left any elements
+		//*** note why the right part wont leave any elements
 		// when compare: left and right, if left <= right, add left
-		// else the right element can be leaved in where it is (in 
+		// else the right element can be left in where it is (in 
 		// the original array, as it is in order already)
 	}
 	
 	public static void main(String[] args) {
 		
 		//int[] test = {3, 7, 8, 5, 2, 1, 9, 5, 4};
-		int[] test = {0, 1, 3};
+		int[] test = {4,6,7,8,1,2,3,5};
 		
 		mergeSort(test, 0, test.length - 1);
 		
