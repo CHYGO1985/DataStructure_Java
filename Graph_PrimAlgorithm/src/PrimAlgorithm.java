@@ -70,7 +70,7 @@ public class PrimAlgorithm {
 		    	
 		    	// update lowCost array, as new vertex A has been added to the set
 		    	// Q: how the lowCost to keep the connecting infor of previous vertex in the set?
-		    	// A: if from previous vertex connect to B, and weight is M, if from new A to B < M
+		    	// A: assume from previous vertex C connect to B, and weight is M, if from new A to B < M
 		    	// then update the infor, otherwise keep the previous B's information.
 		    	if ( lowCost[m] != 0 && metrix[k][m] < lowCost[m]) {
 		    		
