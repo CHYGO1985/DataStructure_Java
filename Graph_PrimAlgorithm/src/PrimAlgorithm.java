@@ -33,6 +33,7 @@ public class PrimAlgorithm {
 		lowCost[0] = 0;
 		adjVertex[0] = 0;
 		
+		// init start vertice to other vertex
 		for (int i = 0; i < VER_NUM; i ++) {
 			
 			lowCost[i] = metrix[0][i];
@@ -46,6 +47,8 @@ public class PrimAlgorithm {
 		    int j = 1;
 		    int k = 0;
 		    
+		    // *** this is to get the current shortest route that is connect to
+		    // the start vertice: 0
 		    while (j < VER_NUM) {
 		    	
 		    	if (lowCost[j] != 0 && lowCost[j] < minWeight) {
@@ -65,7 +68,7 @@ public class PrimAlgorithm {
 		    
 		    for (int m = 1; m < VER_NUM; m ++) {
 		    	
-		    	// update lowCost array, as new vertex A has been add to the set
+		    	// update lowCost array, as new vertex A has been added to the set
 		    	// Q: how the lowCost to keep the connecting infor of previous vertex in the set?
 		    	// A: if from previous vertex connect to B, and weight is M, if from new A to B < M
 		    	// then update the infor, otherwise keep the previous B's information.
