@@ -5,8 +5,8 @@
  * every node in the graph.
  * 2. Core is to compare path(a, c) and path(a, b) + path(b, c)
  * 
- * 1). use an array to track adjacent vertex instead of using original metrix.
- * 2) in greedy algorithm, pay attention to the "core set" taht is ought to change.
+ * 1). use an array to track adjacent vertex instead of using original matrix.
+ * 2) in greedy algorithm, pay attention to the "core set" that is ought to change.
  * 
  * @author jingjiejiang 
  * @history
