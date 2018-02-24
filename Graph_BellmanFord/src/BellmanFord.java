@@ -11,7 +11,7 @@
  * 1. Created on Feb 22, 2018
  *
  */
-public class BallmanFord {
+public class BellmanFord {
 	
     // A class to represent a weighted edge in graph
     class Edge {
@@ -25,7 +25,7 @@ public class BallmanFord {
     Edge edge[];
  
     // Creates a graph with V vertices and E edges
-    BallmanFord(int v, int e)
+    BellmanFord(int v, int e)
     {
         V = v;
         E = e;
@@ -37,7 +37,7 @@ public class BallmanFord {
     // The main function that finds shortest distances from src
     // to all other vertices using Bellman-Ford algorithm.  The
     // function also detects negative weight cycle
-    void BellmanFord(BallmanFord graph,int src)
+    void BellmanFord(BellmanFord graph,int src)
     {
         int V = graph.V, E = graph.E;
         int dist[] = new int[V];
@@ -94,7 +94,7 @@ public class BallmanFord {
 		 int V = 3;  // Number of vertices in graph
 	        int E = 3;  // Number of edges in graph
 	 
-	        BallmanFord graph = new BallmanFord(V, E);
+	        BellmanFord graph = new BellmanFord(V, E);
 	 
 	        // add edge 0-1 (or A-B in above figure)
 	        graph.edge[0].src = 0;
