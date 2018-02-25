@@ -37,7 +37,7 @@ public class BellmanFord {
     // The main function that finds shortest distances from src
     // to all other vertices using Bellman-Ford algorithm.  The
     // function also detects negative weight cycle
-    void BellmanFord(BellmanFord graph,int src)
+    public void bellmanFord(BellmanFord graph,int src)
     {
         int V = graph.V, E = graph.E;
         int dist[] = new int[V];
@@ -77,6 +77,7 @@ public class BellmanFord {
                 dist[u]+weight < dist[v])
               System.out.println("Graph contains negative weight cycle");
         }
+        
         printArr(dist, V);
     }
  
@@ -111,7 +112,7 @@ public class BellmanFord {
 	        graph.edge[2].dest = 2;
 	        graph.edge[2].weight = -10;
 	 
-	        graph.BellmanFord(graph, 0);
+	        graph.bellmanFord(graph, 0);
 
 	}
 
